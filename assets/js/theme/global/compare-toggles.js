@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 export default function (form = '.product-listing form', button = '.compare-button', count = '.compare-count') {
   const $compareButton = $(button);
   const $compareCount = $(count);

@@ -11,21 +11,129 @@ product_results:
       <h1 class="page-heading">
         {{lang 'search.search_results_start'}}
         "{{forms.search.query}}"
-        {{{lang 'search.search_results_end' total=product_results.products.length}}}
       </h1>
+
+      {{#if forms.search.has_suggestions}}
+        {{#if forms.search.suggested_query}}
+          <div class="search-results-suggestion">
+            <a href="{{forms.search.suggested_query.url}}">
+              {{lang 'search.suggestion' suggestion=forms.search.suggested_query.query}}
+            </a>
+          </div>
+        {{/if}}
+      {{/if}}
+
       {{> components/common/breadcrumbs breadcrumbs}}
+
+      {{#unless product_results.faceted_search_enabled}}
+        <div class="dropdown advanced-search-dropdown" data-dropdown>
+          <span class="advanced-search-toggle visible" data-dropdown-toggle>
+            {{lang 'core.advanced_search.title'}}
+          </span>
+          <div class="dropdown-panel advanced-search-panel" data-dropdown-panel>
+            <div class="container">
+              <h2 class="page-heading" data-advanced-search-title>
+                {{lang 'core.advanced_search.title'}}
+              </h2>
+              {{> core/forms/advanced-search/advanced-search}}
+            </div>
+          </div>
+        </div>
+      {{/unless}}
 
       {{{snippet 'search'}}}
 
-      <div class="collection-product-listing-header">
-        {{> components/products/product-listing-header show_compare=product_results.show_compare sort=false}}
+      {{#any product_results.products content_results}}
+        <ul class="tab-search-toggles">
+          <li class="tab-title {{#if product_results.products}}active{{else}}tab-empty{{/if}}">
+            <a href="#product-results">
+              {{lang 'search.product_results.title' num=product_results.products.length}}
+            </a>
+          </li>
+          <li
+            class="
+              tab-title
+              {{#if content_results}}
+                {{#unless product_results.products}}
+                  active
+                {{/unless}}
+              {{else}}
+                tab-empty
+              {{/if}}
+            "
+          >
+            <a href="#content-results">
+              {{lang 'search.content_results.title' num=content_results.length}}
+            </a>
+          </li>
+        </ul>
+
+        <div class="tabs-content">
+          <div
+            class="
+              tab-content-panel
+              product-panel
+              {{#if product_results.products}}
+                active
+              {{else}}
+                tab-empty
+              {{/if}}
+            "
+            id="product-results"
+          >
+            <div class="collection-product-listing-header">
+              {{#any brand_results category_results}}
+                <section class="brand-category-results">
+                  {{> components/search/brand-category-listing}}
+                </section>
+              {{/any}}
+
+              {{> components/products/product-listing-header
+                show_compare=product_results.show_compare
+                sort=false
+              }}
+            </div>
+            <aside
+              class="
+                sidebar
+                {{#unless product_results.faceted_search_enabled}}
+                  sidebar-disabled
+                {{/unless}}
+              "
+              data-category-sidebar
+            >
+                {{> components/search/sidebar}}
+            </aside>
+            <main class="collection-products product-listing" data-category>
+              {{> components/search/product-listing
+                show_compare=product_results.show_compare
+              }}
+            </main>
+          </div>
+          <div
+            class="
+              tab-content-panel
+              content-panel
+              {{#if content_results}}
+                {{#unless product_results.products}}
+                  active
+                {{/unless}}
+              {{else}}
+                tab-empty
+              {{/if}}
+            "
+            id="content-results"
+          >
+            {{> components/search/content-listing}}
+          </div>
+        {{else}}
+          <section class="tab-content-panel active">
+            <main class="search-results empty-results">
+              {{lang 'search.no_results'}}
+            </main>
+          </section>
+        {{/any}}
       </div>
-      <aside class="sidebar {{#unless product_results.faceted_search_enabled}}sidebar-disabled{{/unless}}" data-category-sidebar>
-          {{> components/search/sidebar}}
-      </aside>
-      <main class="collection-products product-listing" data-category>
-        {{> components/search/product-listing show_compare=product_results.show_compare}}
-      </main>
     </div>
   </div>
 

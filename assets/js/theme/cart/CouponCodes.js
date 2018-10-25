@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import utils from '@bigcommerce/stencil-utils';
 import Alert from '../components/Alert';
 import refreshContent from './refreshContent';

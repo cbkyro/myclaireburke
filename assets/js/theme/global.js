@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import 'jquery-trend';
 import 'jquery-revealer';
 
@@ -13,6 +12,7 @@ import initFormSwatchFields from './core/formSelectedValue';
 import CartPreview from './global/cart-preview';
 import QuickShop from './components/quick-shop';
 import initAlertDismissable from './core/alertDismissable';
+import selectOption from './core/selectOption';
 
 // global scope jQuery plugins
 /* eslint-disable no-unused-vars */

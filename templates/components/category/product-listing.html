@@ -1,5 +1,5 @@
 {{#if category.products}}
-  <!--<form class="form" action="/compare" method="POST">-->
+  <form class="form" action="/compare" method="POST">
     <div class="product-grid grid-{{theme_settings.products-per-row}}">
       {{#each category.products}}
         {{> components/products/product-item
@@ -11,7 +11,7 @@
         }}
       {{/each}}
     </div>
-  <!--</form>-->
+  </form>
 {{/if}}
 
 {{#if category.products.length}}

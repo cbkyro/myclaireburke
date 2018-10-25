@@ -1,0 +1,1 @@
+{"components/amp/styles/footer":".social-icon-nav {\n  text-align: left;\n}\n\n.social-icon-list {\n  margin-left: 0;\n}\n\n.social-link {\n  display: inline-block;\n  margin-right: 10px;\n  vertical-align: middle;\n}\n\n.social-link a {\n  display: block;\n  line-height: 2;\n}\n\n.social-link svg {\n  width: 20px;\n  height: 20px;\n  fill: currentColor;\n}\n"}

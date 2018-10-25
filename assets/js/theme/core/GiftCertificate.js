@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 export default class GiftCertificate {
   constructor(context) {
     this.$purchaseForm = $('[data-giftcard-purchase-form]');

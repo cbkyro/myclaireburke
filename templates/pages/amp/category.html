@@ -1,0 +1,87 @@
+---
+category:
+  shop_by_price: true
+  products:
+    limit: {{theme_settings.product-count}}
+---
+
+{{#partial 'amp-cart-icon'}}
+  <div class="amp-mini-cart">
+    <a
+      class="shopping-links cart-preview-trigger"
+      data-cart-count="{{cart.quantity}}"
+      href="{{urls.cart}}"
+    >
+      <span class="cart-quantity" id="cart-preview-count">{{cart.quantity}}</span>
+      <span class="cart-label">{{lang 'cart_preview.label'}}</span>
+    </a>
+  </div>
+{{/partial}}
+
+{{#partial 'amp-custom-header-styles'}}
+  {{> components/amp/styles/mini-cart}}
+{{/partial}}
+
+{{> core/amp/pages/category
+  header_background="#ffffff"
+  header_text=theme_settings.body-color
+  body_background=theme_settings.site-background-color
+  color_headings=theme_settings.heading-color
+  color_text=theme_settings.body-color
+  footer_background=theme_settings.footer-background-color
+  footer_text=theme_settings.footer-text-color
+  color_accent=theme_settings.accent-color
+  color_borders=theme_settings.border-color
+}}
+
+{{#partial 'amp-product-listing'}}
+  {{> core/amp/category/product-listing
+    default=theme_settings.default_image
+    as_low_as=theme_settings.price_as_low_as
+    image_ratio="ratio-1-1"
+    image_cropping="image-contain"
+    catalog_columns="one"
+    info_alignment="center"
+  }}
+{{/partial}}
+
+{{#partial 'amp-footer'}}
+  {{> core/amp/common/footer
+    theme_credits=theme_settings.theme-credits
+    theme_name="Chelsea"
+    store_copyright=theme_settings.show_footer_copyright
+  }}
+{{/partial}}
+
+{{#partial 'amp-social'}}
+  {{> components/common/icons/social}}
+  <nav class="social-icon-nav">
+    <h5 class="amp-footer-heading">{{lang 'footer.connect'}}</h5>
+    <ul class="social-icon-list">
+      {{#each social_media}}
+        <li
+          class="
+            social-link
+            {{#if display_name '===' 'google+'}}
+              google-plus
+            {{else}}
+              {{display_name}}
+            {{/if}}
+          "
+        >
+          <a href="{{url}}" class="{{display_name}}" target="_blank">
+            <svg class="icon-social icon-{{display_name}}">
+              <use xlink:href="#icon-{{display_name}}"></use>
+            </svg>
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+  </nav>
+{{/partial}}
+
+{{#partial 'amp-custom-footer-styles'}}
+  {{> components/amp/styles/footer}}
+{{/partial}}
+
+{{> layout/amp}}

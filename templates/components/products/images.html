@@ -14,7 +14,6 @@
           src="{{getImage this 'large' (cdn default_image)}}"
           alt="{{this.alt}}"
           title="{{this.alt}}"
-          {{#unless @index}}itemprop="image"{{/unless}}
         >
       </a>
     {{/each}}
@@ -24,7 +23,6 @@
       src="{{getImage this 'large' (cdn default_image)}}"
       alt="{{this.alt}}"
       title="{{this.alt}}"
-      itemprop="image"
     >
   {{/if}}
 </div>

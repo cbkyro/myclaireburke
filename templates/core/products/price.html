@@ -16,7 +16,7 @@
          If true, show a label saying how much is saved from the full price.
 }}
 {{#if price}}
-  <div class="price" {{#if schema_org}}itemprop="offers" itemscope itemtype="http://schema.org/Offer"{{/if}}>
+  <div class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
     {{#if schema_org}}
       <meta itemprop="priceCurrency" content="{{currency_selector.active_currency_code}}">
 

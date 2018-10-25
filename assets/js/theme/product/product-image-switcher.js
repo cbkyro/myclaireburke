@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import imagesLoaded from 'imagesloaded';
 import trend from 'jquery-trend';
 

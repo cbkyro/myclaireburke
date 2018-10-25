@@ -1,5 +1,4 @@
 import { hooks, api } from '@bigcommerce/stencil-utils';
-import $ from 'jquery';
 import Url from 'url';
 import 'history.js/scripts/bundled-uncompressed/html4+html5/jquery.history';
 
@@ -112,7 +111,7 @@ export default class FacetedSearch {
 
     if (this.$body.hasClass('search')) {
       const currentSearch = `search_query=${$('[data-faceted-search]').data('search-query')}` || '';
-      queryParams = `${queryParams}&${currentSearch}`;
+      queryParams = `${currentSearch}&${queryParams}`;
     }
 
     this._goToUrl(Url.format({ pathname: url.pathname, search: '?' + queryParams }));

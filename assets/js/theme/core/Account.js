@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import initAlertDismissable from './alertDismissable';
 import initDownloadGallery from './downloadGallery';
 import updateState from './updateState';

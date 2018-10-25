@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import isElementInViewport from './components/Inview';
 
 export default class MobileCarousel {

@@ -11,7 +11,6 @@
  *  An object containing additional options for the module. (see below)
  */
 
-import $ from 'jquery';
 import _ from 'lodash';
 import trend from 'jquery-trend';
 

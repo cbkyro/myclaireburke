@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 export default class FormValidator {
   constructor(context) {
     this.context = context;

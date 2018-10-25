@@ -22,12 +22,16 @@
         <li class="nav-menu-item has-dropdown has-shop-link">
           <a href="#" data-shop-link>{{lang 'common.shop_all'}}</a>
           <div class="nav-submenu">
-            <div class="nav-submenu-arrow"><div class="nav-submenu-arrow-inner"></div></div>
+            <div class="nav-submenu-arrow">
+              <div class="nav-submenu-arrow-inner"></div>
+            </div>
             <span class="nav-overflow">
               <ul>
                 {{#each categories}}
                   <li class="nav-submenu-item {{#if children}}has-dropdown{{/if}}">
-                    {{> components/navigation-item has_children=children}}
+                    {{> components/navigation-item
+                      has_children=children
+                    }}
                   </li>
                 {{/each}}
               </ul>
@@ -58,14 +62,6 @@
       {{/if}}
       {{#if theme_settings.menu-type '===' 'main-nav'}}
         {{#each categories}}
-          {{#if @index '===' 3}}
-          <li class="nav-menu-item">
-            <a href="/about-us">About Us</a>
-          </li>
-          <li class="nav-menu-item">
-            <a href="/blog/">Blog</a>
-          </li>
-          {{/if}}
           <li class="nav-menu-item {{#if children}}has-dropdown{{/if}}">
             {{> components/navigation-item has_children=children}}
             {{#if children}}

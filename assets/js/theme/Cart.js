@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import PageManager from '../PageManager';
 import CartUtils from './cart/CartUtils';
 import ShippingCalculator from './cart/ShippingCalculator';

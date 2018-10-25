@@ -2,6 +2,174 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.18.6] - 2018-10-18
+
+### Added
+- Support for Smart Payment buttons
+
+## [1.18.5] - 2018-09-13
+
+### Fixed
+- The structured data wasn't so hot, so we fixed it up and now it's doing just
+  fine (fixes THEME-1662)
+
+## [1.18.4] - 2018-08-16
+
+### Added
+- There is an option in the control panel to let your shoppers ship items to
+  multiple addresses and Chelsea honors that setting now
+
+### Changed
+- It was a little weird that the Apple Pay button color settings weren't with
+  the other color settings in the Theme Editor so we moved it, and now it is
+- The themes social icons were being made with an icon font which broke if
+  you wanted to download and customize your theme. They have been replaced with
+  svg's on the regular pages and the amp pages so they no longer break
+  (fixes THEME-1596)
+
+## [1.18.3] - 2018-08-02
+
+### Fixed
+- We just made it easier for shoppers to leave reviews once they've purchased
+  from your shop. They get taken straight to the review form when they click
+  the link in the email. Sit back, relax and watch those reviews roll in
+
+## [1.18.2] - 2018-07-12
+
+### Added
+- There is a newsletter summary available to you in the control panel and
+  Chelsea will now support showing that summary if you want to (THEME-1621)
+
+### Fixed
+- Parent pages weren't accessible through the main navigation, but they were
+  through the page breadcrumbs, that's fixed and you can now reach your parent
+  pages through the nav (fixes THEME-1295)
+- Now all items can be added to the cart on mobile iOS without it kicking up a
+  fit (THEME-1605)
+
+##[1.18.1] - 2018-05-24
+
+### Fixed
+- Image change rules now work on weightless products (THEME-1491)
+- Updated dependency list and remove bitbucket references.
+
+##[1.18.0] - 2018-05-17
+
+### Added
+- AMP product page, if activated products can be found on google amp search
+
+##[1.17.6] - 2018-04-26
+
+### Added
+- Added background color to main container
+
+### Fixed
+- Fixed issue where custom Down for Maintenance message wouldn't show up (fixes THEME-1552)
+
+##[1.17.5] - 2018-04-19
+
+### Fixed
+- You may have seen your AMP footer script throw an error, we have fixed that.
+  No more errors for you.
+
+##[1.17.4] - 2018-04-13
+
+### Fixed
+- Get attributes was calling the wrong function messing things all up. It's
+  fixed now
+
+##[1.17.3] - 2018-04-12
+
+### Added
+- Content results, search suggestions and category/brand results added to your
+  search page, now it's more useful and powerful then ever! (fixes THEME-896)
+- It's important for your users to be able to find what they are looking for on
+  your store, if you don't have faceted search, we just made it a lot easier by
+  adding an advanced search panel to your search page (fixes THEME-896)
+
+##[1.17.2] - 2018-03-29
+
+### Added
+- The checkout and order confirmation pages now support header and footer scripts
+
+##[1.17.1] - 2018-03-22
+
+### Fixed
+- Your AMPs will look much closer to your parent theme color wise now. Enjoy!
+
+##[1.17.0] - 2018-03-15
+
+### Added
+- Chelsea just got pumped up with AMP support for it's category pages. This means
+  users who find one of your category pages through a google search have the
+  option to view it super fast from Googles servers
+
+## [1.16.0] - 2018-03-01
+
+### Added
+- Adding a GeoTrust seal just go easier. Add it through theme settings
+
+## [1.15.0] - 2018-02-15
+
+### Changed
+- Webpack is currently on it's third version and now we're using it too,
+the times they are-a changin'
+
+## [1.14.7] - 2018-01-18
+
+### Fixed
+- Fixed the way we show dropdown product options, you're welcome Safari!
+
+## [1.14.6] - 2018-01-04
+
+### Fixed
+- Show stock level for products when changing variants (fixes THEME-1203)
+
+## [1.14.5] - 2017-12-21
+
+### Added
+- Added Out of Stock message to the product and category pages (fixes THEME-1443)
+
+### Fixed
+- Fixed issue where selecting 'None' in a product list would not change the gallery back to the default image (fixes THEME-1206)
+
+## [1.14.4] - 2017-12-14
+
+### Added
+- Optimized for Pixelpop added to the feature list
+- Support for none in your non-required product options, no more page refresh needed
+- User unsure if they have an account or what their password is? Now they will
+  get a helpful message when they try to reset their password.
+
+### Fixed
+- Fixed issue where default sorting was not being applied on category pages (fixes THEME-1400)
+
+## [1.14.3] - 2017-11-30
+
+### Fixed
+- Custom fields on the product page now render HTML tags
+
+### Added
+- Added instructions to select dropdowns
+
+### Changed
+- Update to stencil-utils for better product option support
+- Product checkbox customizations now appear like product option checkboxes
+
+### Fixed
+- Countries without states having no longer require the state field to be filled
+
+## [1.14.2] - 2017-11-22
+
+### Changed
+- Our themes now support all sorts of 3rd party giftcards! Let the celebrations begin!!!
+
+## [1.14.1] - 2017-09-07
+
+### Changed
+- Now the banners are limited to one and are random*.
+Random is defined as: made, done, happening, or chose without method or conscious decision.
+
 ## [1.14.0] - 2017-07-13
 
 ### Added

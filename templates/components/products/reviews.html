@@ -1,6 +1,19 @@
 
+<div class="reviews">
+  {{#if product.reviews.total ">" 0}}
+    {{#each reviews.list}}
+      {{> components/products/review this review_count=../../theme_settings.product_review_count}}
+    {{/each}}
+    {{{snippet 'reviews'}}}
+  {{else}}
+    {{lang 'product.reviews.no_reviews'}}
+  {{/if}}
+  {{#if product.reviews.total ">" theme_settings.product_review_count}}
+   <button class="button" data-toggle-extra-reviews data-toggle-text="{{lang 'product.reviews.view_less'}}">{{lang 'product.reviews.view_all' count=product.reviews.list.length}}</button>
+ {{/if}}
+</div>
 
-<span class="reviews-leave-review">{{lang 'product.reviews.leave_review'}}</span>
+<span class="button reviews-leave-review">{{lang 'product.reviews.leave_review'}}</span>
 
 <div class="reviews-form-wrapper">
   <h2 class="section-title">{{lang 'product.reviews.write_review'}}</h2>
@@ -46,18 +59,4 @@
       <input type="hidden" name="throttleToken" value="{{product.reviews.throttleToken}}">
     {{/if}}
   </form>
-</div>
-
-<div class="reviews">
-  {{#if product.reviews.total ">" 0}}
-    {{#each reviews.list}}
-      {{> components/products/review this review_count=../../theme_settings.product_review_count}}
-    {{/each}}
-    {{{snippet 'reviews'}}}
-  {{else}}
-    {{lang 'product.reviews.no_reviews'}}
-  {{/if}}
-  {{#if product.reviews.total ">" theme_settings.product_review_count}}
-   <button class="button" data-toggle-extra-reviews data-toggle-text="{{lang 'product.reviews.view_less'}}">{{lang 'product.reviews.view_all' count=product.reviews.list.length}}</button>
- {{/if}}
 </div>

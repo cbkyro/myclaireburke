@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 /*
  * Prepends a span containing the currently selected text value to matching select elements
  * and updates that span's text on input change.

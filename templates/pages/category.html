@@ -7,42 +7,18 @@ category:
 ---
 
 {{#partial "page"}}
-  <div class="category-hero" data-category-name="{{dashcase category.name}}">
-    <div class="category-hero-border">
-      <div class="category-hero-inner">
-        <div class="category-hero-border-inner">
-          <div class="category-hero-border-inner-inner">
-            <h1 class="page-heading">{{category.name}}</h1>
-            {{#if theme_settings.show-category-description}}
-              <div class="page-description">{{{category.description}}}</div>
-            {{/if}}
-            {{#if theme_settings.show-category-image}}
-              <img src="{{getImage category.image 'original'}}"
-                   class="collection-product-image"
-                   alt="{{category.name}}" />
-            {{/if}}
-          </div>
-        </div>
-      </div>
-      <a href="#category-container" class="category-hero-more">
-        Shop {{category.name}}
-      </a>
-      <script>
-        window.onload = function(){
-	    $('.category-hero-more').on('click',function (e) {
-	      e.preventDefault();
-	      var $target = $(this.hash);
-	      $('html, body').stop().animate({
-	        'scrollTop': $target.offset().top-$('header.main-header').height()
-	      }, 900);
-	    });
-        };
-      </script>
-    </div>
-  </div>
 
-  <div class="container" data-category-name="{{dashcase category.name}}" id="category-container">
+  <div class="container">
     <div class="content">
+      <h1 class="page-heading">{{category.name}}</h1>
+      {{#if theme_settings.show-category-description}}
+        <div class="page-description">{{{category.description}}}</div>
+      {{/if}}
+      {{#if theme_settings.show-category-image}}
+        <img src="{{getImage category.image 'original'}}"
+             class="collection-product-image"
+             alt="{{category.name}}" />
+      {{/if}}
 
       {{{snippet 'categories'}}}
 
@@ -52,6 +28,7 @@ category:
       <div class="collection-product-listing-header">
         {{> components/products/product-listing-header
           show_compare=category.show_compare
+          sort=pagination.category.sort
         }}
       </div>
       <aside
@@ -69,9 +46,6 @@ category:
         }}
       </main>
     </div>
-    
-    {{> components/category/reviews}}
-    {{#each products.product.reviews.list}}a{{/each}}
   </div>
 
 {{/partial}}

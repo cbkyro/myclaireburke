@@ -22,17 +22,5 @@
       </a>
     </div>
   </div>
-  {{#if settings.show_product_rating}}
-    <div id="user-reviews">
-      <div class="product-reviews">
-        {{# if product.num_reviews ">" 0}}
-            {{> components/products/ratings rating=product.rating aggregate=true}}
-            {{{snippet 'product_rating'}}}
-            <h3 class="section-title">{{lang 'product.reviews.customer_reviews'}}</h3>
-        {{/if}}
-        {{> components/products/reviews reviews=product.reviews}}
-      </div>
-    </div>
-  {{/if}}
 
 </div>

@@ -1,1 +1,1 @@
-{"checkout.scss":".header-logo {\r\n  display: block;\r\n  width: 400px;\r\n  margin: 0 auto;\r\n\r\n  > a {\r\n    display: inline-block;\r\n\r\n    > img { width: 80%; }\r\n  }\r\n}\r\n\r\n.ExpressCheckoutBlockCollapsed .po_box_error {\r\n    display: none;\r\n    padding: 10px;\r\n}\r\n .po_box_error {\r\n    padding: 10px;\r\n }\r\n "}
+{"checkout.scss":"/*! Theme: Chelsea v1.18.6 */\n.header-logo {\n  display: block;\n  width: 200px;\n\n  > a {\n    display: inline-block;\n\n    > img { width: 100%; }\n  }\n}\n"}

@@ -1,7 +1,9 @@
 import 'babel-polyfill';
-import $ from 'jquery';
+import './theme/global/jquery';
+
 import async from 'async';
 import account from './theme/account';
+import AmpProduct from './theme/AmpProduct';
 import auth from './theme/auth';
 import blog from './theme/blog';
 import brand from './theme/brand';
@@ -63,7 +65,8 @@ let PageClasses = {
     'pages/sitemap': sitemap,
     'pages/subscribed': subscribe,
     'pages/account/wishlist-details': wishlist,
-    'pages/account/wishlists': wishlist
+    'pages/account/wishlists': wishlist,
+    'pages/amp/product-options': AmpProduct,
   },
   /**
    * Getter method to ensure a good page type is accessed.

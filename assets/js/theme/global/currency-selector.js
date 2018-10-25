@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 export default class CurrencySelector {
   constructor(el) {
     this.$el = $(el);

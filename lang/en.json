@@ -1,11 +1,10 @@
 {
   "header": {
-    "store_locator": "Find a store",
     "logged_in_as": "Logged in as {name}",
-    "log_out": "Sign out",
-    "log_in": "Sign in",
+    "log_out": "Log out",
+    "log_in": "Log in",
     "sign_up": "Sign up",
-    "view_cart": "View bag",
+    "view_cart": "View cart",
     "search": "Search",
     "total": "Total"
   },
@@ -30,9 +29,9 @@
   },
   "cart_preview": {
     "items": "{NUM, plural, =0{(0 items)} one {(# item)} other {(# items)}}",
-    "label": "Your bag",
+    "label": "Cart",
     "checkout": {
-      "empty_cart": "Your bag is empty",
+      "empty_cart": "Your cart is empty",
       "title": "Check out",
       "button": "Check out"
     }
@@ -44,7 +43,8 @@
     "subtotal": "Subtotal",
     "total": "Total",
     "checkout": "Checkout",
-    "empty": "Your bag is empty",
+    "checkout_multiple": "or checkout out with multiple addresses",
+    "empty": "Your cart is empty",
     "empty_message": "Continue Shopping.",
     "discount": "Discount",
     "coupon_codes": {
@@ -133,7 +133,7 @@
   "compare": {
     "header": "Comparing",
     "num_of_items": "{products} items",
-    "add_to_cart": "Add to Bag",
+    "add_to_cart": "Add to Cart",
     "stop_comparing": "Remove",
     "description": "Description",
     "rating": "Rating",
@@ -142,8 +142,26 @@
     "not_avail": "Not Available"
   },
   "search": {
+    "brand_results": {
+      "title": "Brands"
+    },
+    "category_results": {
+      "title": "Categories"
+    },
+    "content_type": "{type}",
+    "content_results": {
+      "read_more": "Read more",
+      "title": "Content ({num})",
+      "view": "Visit page"
+    },
+    "no_content_results": "No content results",
+    "no_product_results": "No products",
+    "no_results": "No search results",
+    "product_results": {
+      "title": "Products ({num})"
+    },
     "search_results_start": "Search Results for ",
-    "search_results_end": " Returned <strong>{total}</strong> {total, plural, one{Product} other{Products}}",
+    "suggestion": "Did you mean {suggestion}?",
     "faceted": {
       "selected": {
         "title": "Refine by",
@@ -269,13 +287,13 @@
     "including_tax": "(incl. tax)",
     "select_an_option": "Please Choose An Option",
     "pre_order": "Pre-Order",
-    "add_to_cart": "Add to Bag",
+    "add_to_cart": "Add to Cart",
     "add_to_wishlist": "Add to Wishlist",
-    "quantity": "QTY",
-    "related_products": "You may also like...",
+    "quantity": "Quantity",
+    "related_products": "Related products",
     "success": "*product* has been successfully added to your *cart_link*. Feel free to *continue_link* or *checkout_link*.",
     "error_message_stock": "Unfortunately, we do not have *quantity* in stock.",
-    "error_message_general": "We were unable to add this product to your bag. Please try again later. Contact us if you continue to have issues.",
+    "error_message_general": "We were unable to add this product to your cart. Please try again later. Contact us if you continue to have issues.",
     "cart_link": "cart",
     "home_link": "continue shopping",
     "checkout_link": "check out",
@@ -321,10 +339,10 @@
       "fixed": "and pay only {discount} each"
     },
     "reviews": {
-      "customer_reviews": "See what our customers are saying!",
+      "customer_reviews": "Customer Reviews",
       "write_review": "Write a Review",
       "no_reviews": "No reviews.",
-      "leave_review": "Write a Review",
+      "leave_review": "Leave a Review",
       "stars_count": "{rating, plural, one {# star} other {# stars}}",
       "view_all": "View all {count} reviews",
       "view_less": "View Less",
@@ -625,6 +643,52 @@
     }
   },
   "core": {
+    "amp": {
+      "footer": {
+        "brands": "Brands",
+        "call_us": "Call us at {phone_number}",
+        "categories": "Categories",
+        "contact": "Contact",
+        "pages": "Pages",
+        "sitemap_title": "Sitemap"
+      },
+      "header": {
+        "account": "Account",
+        "addresses": "Addresses",
+        "all": "All",
+        "currency": "Currency: {code}",
+        "gift_certificate": "Gift Certificate",
+        "login": "Login",
+        "logout": "Logout",
+        "menu_close": "Menu close",
+        "menu_open": "Menu open",
+        "messages": "Messages",
+        "orders": "Orders",
+        "recently_viewed": "Recently viewed",
+        "returns": "Returns",
+        "search": "Search",
+        "search_empty": "Search field empty",
+        "settings": "Settings",
+        "sign_up": "Sign Up",
+        "store_credit": "You have {store_credit} of store credit. To use it, simply place your order and you will be able to choose store credit as the payment method when it comes time to pay for your order.",
+        "wishlists": "Wishlists"
+      },
+      "no_products": "No Products",
+      "product": {
+        "atc": "Add to Cart",
+        "choose_options": "Choose Options",
+        "description": "Description",
+        "pre_order": "Pre Order",
+        "quantity": "Quantity",
+        "reviews": "{num} Reviews",
+        "reviews_post_on_by": "Posted by { name } on { date }",
+        "share": "Share",
+        "sold_out": "Sold Out",
+        "videos": "Videos"
+      },
+      "subcategories": "Subcategories",
+      "view_all": "View All"
+    },
     "pagination": {
       "page": "Page",
       "of": "of",
@@ -633,16 +697,27 @@
     },
     "product": {
       "compare": "Compare",
-      "sale": "On Sale",
+      "none": "None",
       "pick_one": "Pick one",
       "quickshop": {
         "view": "Quick View"
+      },
+      "sale": "On Sale",
+      "sold_out": "Sold Out",
+      "zoom": {
+        "close": "Close (Esc)",
+        "share": "Share",
+        "fullscreen": "Toggle fullscreen",
+        "zoom_action": "Zoom in/out",
+        "previous": "Previous (arrow left)",
+        "next": "Next (arrow right)"
       }
     },
     "rating": {
       "total_votes": "({votes})"
     },
     "price": {
+      "from": "From",
       "with_tax": "(Inc. {tax_label})",
       "without_tax": "(Ex. {tax_label})",
       "you_save": "(You save {amount})"
@@ -667,6 +742,33 @@
       "submit": "Submit Message",
       "successful": "We've received your feedback and will respond shortly if required. <a href=\"{shopPath}\">Continue</a>."
     },
+    "advanced_search": {
+      "cancel": "Cancel",
+      "brand": "Brands",
+      "by_price": "Search By Price",
+      "by_setting": "Search By Setting",
+      "categories": "Categories",
+      "featured_products": {
+        "disabled": "Only non-featured products",
+        "enabled": "Only featured products",
+        "title": "Featured Products"
+      },
+      "free_shipping": {
+        "free": "Only free shipping",
+        "paid": "Only paid shipping",
+        "title": "Free Shipping"
+      },
+      "from": "From",
+      "keyword": "Search Keyword",
+      "max_price": "Max",
+      "min_price": "Min",
+      "no_preference": "No Preference",
+      "price_range": "Price Range",
+      "search": "Search",
+      "searchsubs": "Automatically search sub categories",
+      "title": "Advanced Search",
+      "to": "to"
+    },
     "giftcard": {
       "heading": "Gift Certificates",
       "purchase": {
@@ -683,7 +785,7 @@
         "custom_range": "(Value must be between {min} and {max})",
         "agree": "I understand that Gift Certificates expire after {days, plural, one {1 day} other {# days}}",
         "agree2": "I agree that Gift Certificates are nonrefundable",
-        "submit_value": "Add Gift Certificate to Bag",
+        "submit_value": "Add Gift Certificate to Cart",
         "update_value": "Update Gift Certificate"
       },
       "balance": {
@@ -696,8 +798,8 @@
         "heading": "Redeem Gift Certificate",
         "subheading": "To redeem a gift certificate at {store_name}, follow the simple steps below.",
         "item1": "You need your unique gift certificate code, which is part of the gift certificate that was emailed to you as an attachment. It will look something like Z50-Y6K-COS-402.",
-        "item2": "Browse the store and add items to your bag as you normally would.",
-        "item3": "Click the '<a href=\"{cart_url}\">View Bag</a>' link to view the contents of your shopping bag.",
+        "item2": "Browse the store and add items to your cart as you normally would.",
+        "item3": "Click the '<a href=\"{cart_url}\">View Cart</a>' link to view the contents of your shopping cart.",
         "item4": "Type your gift certificate code in to the 'Redeem Gift Certificate' box and click 'Go'."
       }
     },
@@ -921,7 +1023,7 @@
           "hide": "Hide Videos",
           "show": "Show Videos"
         },
-        "add_to_cart": "Add to Bag",
+        "add_to_cart": "Add to Cart",
         "options": "Options",
         "sku": "SKU",
         "condition": "Condition",
@@ -997,8 +1099,7 @@
         "heading": "New Password",
         "password": "New Password",
         "password2": "Confirm Password",
-        "submit": "Update Password",
-        "passwords_no_match": "Your passwords do not match."
+        "submit": "Update Password"
       },
       "forgot": {
         "heading": "Forgot Password",
@@ -1012,6 +1113,15 @@
       "maintenance_message": "This store is currently unavailable due to maintenance. It should be available again shortly. We apologize for any inconvenience caused.",
       "hibernation_heading": "We'll be back",
       "hibernation_message": "Thanks for visiting. Our store is currently unavailable. We apologize for any inconvenience caused."
+    },
+    "forms": {
+      "passwords_no_match": "Your passwords do not match.",
+      "password_length": "Your password must be at least {min_length} characters long",
+      "max_checked": "Maximum {count, plural, one {1 option} other {# options}} allowed.",
+      "min_checked": "Please select {count, plural, one {an option} other {# or more options}}."
+    },
+    "geotrust": {
+      "click_to_verify": "Click to Verify - This site chose GeoTrust SSL for secure e-commerce and confidential communications."
     }
   }
 }

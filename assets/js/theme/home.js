@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import _ from 'lodash';
 import PageManager from '../pageManager';
 import Carousel from 'bc-carousel';

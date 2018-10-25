@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import PageManager from '../pageManager';
 import 'vanilla-fitvids/jquery.fitvids';
 

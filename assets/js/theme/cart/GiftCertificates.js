@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import utils from '@bigcommerce/stencil-utils';
 import Alert from '../components/Alert';
 import refreshContent from './refreshContent';
@@ -63,6 +62,6 @@ export default class GiftCertificates {
       return false;
     }
 
-    return /^[A-Z0-9]{3}\-[A-Z0-9]{3}\-[A-Z0-9]{3}\-[A-Z0-9]{3}$/.exec(code);
+    return true;
   }
 }

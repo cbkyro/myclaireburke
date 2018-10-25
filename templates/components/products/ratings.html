@@ -1,14 +1,22 @@
 
 <div class="product-rating">
   <div class="rating-stars-readonly" aria-hidden="true">
-    <svg class="rating-stars" viewBox="0 0 200 40"> 
-        {{#for 1 5}}
-          <use {{#if ../rating '>=' $index}}xlink:href="#full-star" href="#full-star" {{else}} xlink:href="#empty-star" href="#empty-star"{{/if}} x="{{ multiply (subtract $index 3) 40}}"></use>
-        {{/for}}
-    </svg>
+    {{#for 1 5}}
+      <i
+        class="
+          rating-star
+          {{#if ../rating '>=' $index}}
+            star-full
+          {{else}}
+            star-empty
+          {{/if}}"
+      ></i>
+    {{/for}}
   </div>
   <span class="rating-total-score sr-only">{{this.rating}}</span>
   {{#if aggregate}}
-    <a class="rating-total-votes" href="#user-reviews">({{product.num_reviews}})</a>
+    <a class="rating-total-votes" href="#write_review">
+      ({{product.num_reviews}})
+    </a>
   {{/if}}
 </div>

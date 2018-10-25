@@ -1,115 +1,88 @@
-<footer class="main-footer {{#if theme_settings.show_footer_brands}}footer-has-brands{{/if}}">
-    
-  <div class="site-footer-promos-wrap">
-    
-    <div class="site-footer-promos">
-      
-      <div class="site-footer-promo-2">
-        <a href="tel:+18882133807">
-          <h3>Contact Us</h3>
-          <h5>1-888-213-3807</h5>
-        </a>
-      </div>
-      
-      <div class="site-footer-promo-2">
-        <a href="/store-locator">
-          <h3>Stores</h3>
-          <h5>Find a store near you</h5>
-        </a>
-      </div>
-      
-      <div class="site-footer-promo-4">
-        <h5>Get on the list and be the first to know.</h5>
-        {{> components/common/newsletter-subscribe}}
-      </div>
-      
-      <div class="site-footer-promo-4">
-        <ul class="social-icon-list">
-          {{#each social_media}}
-            <li class="social-link {{#if display_name '===' 'google+'}}google-plus{{else}}{{display_name}}{{/if}}">
-              <a href="{{url}}" class="{{display_name}}" target="_blank"></a>
-            </li>
-          {{/each}}
-        </ul>
-      </div>
-      
-    </div>
-    
-  </div>
+<footer
+  class="
+    main-footer
+    {{#if theme_settings.show_footer_brands}}footer-has-brands{{/if}}
+  "
+>
+  {{#if settings.show_newsletter_box}}
+    <section class="site-subscribe">
+      {{> components/common/newsletter-subscribe}}
+
+      {{#if settings.show_newsletter_summary}}
+        <div class="site-subscribe-summary">{{settings.newsletter_summary}}</div>
+      {{/if}}
+    </section>
+  {{/if}}
 
   <div class="site-footer-wrap">
 
     <div class="site-footer">
 
-      <!--<section class="site-footer-item footer-branding">
+      <section class="site-footer-item footer-branding">
         {{#if settings.store_logo.image.data}}
           <a class="logo" href="/">
-            <img class="header-logo-image" src="{{getImage settings.store_logo.image 'logo'}}" alt="{{settings.store_logo.image.alt}}">
+            <img
+              class="header-logo-image"
+              src="{{getImage settings.store_logo.image 'logo'}}"
+              alt="{{settings.store_logo.image.alt}}"
+            >
           </a>
         {{else}}
-          <h1 class="text"><a href="/">{{settings.store_logo.title}}</a></h1>
+          <h1 class="text">
+            <a href="/">{{settings.store_logo.title}}</a>
+          </h1>
         {{/if}}
-      </section>-->
+      </section>
 
       <nav class="site-footer-item site-page-nav">
-        <h3 class="site-footer-heading">Customer Service</h3>
         <ul>
-          <li class="site-footer-nav-item"><a href="/about-us/">About us</a></li>
-          <li class="site-footer-nav-item"><a href="/quality-promise/">Quality promise</a></li>
-          <li class="site-footer-nav-item"><a href="/contact-us/">Contact us</a></li>
-          <li class="site-footer-nav-item"><a href="/email-sign-up/">Email sign up</a></li>
-          <li class="site-footer-nav-item"><a href="/store-locator/">Retail store locator</a></li>
-          <li class="site-footer-nav-item"><a href="/how-to-potpourri/">How to potpourri</a></li>
+          {{#each pages}}
+            <li class="site-footer-nav-item">
+              <a href="{{url}}">{{name}}</a>
+            </li>
+          {{/each}}
+          {{#all settings.gift_certificates_enabled urls.gift_certificate.purchase}}
+            <li class="site-footer-nav-item">
+              <a href="{{urls.gift_certificate.purchase}}">
+                {{lang 'footer.purchase_gift_certificates'}}
+              </a>
+            </li>
+          {{/all}}
+          {{#if theme_settings.sitemap}}
+            {{#if urls.sitemap}}
+              <li class="site-footer-nav-item">
+                <a href="{{urls.sitemap}}">
+                  {{lang 'common.sitemap'}}
+                </a><
+                /li>
+            {{/if}}
+          {{/if}}
         </ul>
       </nav>
 
-      <nav class="site-footer-item site-page-nav">
-        <h3 class="site-footer-heading">Order Management</h3>
+      <nav class="site-footer-item site-category-nav">
         <ul>
-          <li class="site-footer-nav-item"><a href="/redeem-a-coupon-code/">Redeem a coupon code</a></li>
-          <li class="site-footer-nav-item"><a href="/paying-for-an-order/">Paying for an order</a></li>
-          <li class="site-footer-nav-item"><a href="/tracking-your-order/">Tracking your order</a></li>
-          <li class="site-footer-nav-item"><a href="/cancelling-or-editing-an-order/">Cancelling or editing your order</a></li>
+          {{#each categories}}
+            <li class="site-footer-nav-item">
+              <a href="{{url}}">{{name}}</a>
+            </li>
+          {{/each}}
         </ul>
       </nav>
 
-      <nav class="site-footer-item site-page-nav">
-        <h3 class="site-footer-heading">Shipping &amp; Returns</h3>
-        <ul>
-          <li class="site-footer-nav-item"><a href="/shipping-handling/">Shipping & handling</a></li>
-          <li class="site-footer-nav-item"><a href="/return-refund-policy/">Return & refund policy</a></li>
-        </ul>
-      </nav>
-
-      <nav class="site-footer-item site-page-nav">
-        <h3 class="site-footer-heading">Managing Your Account</h3>
-        <ul>
-          <li class="site-footer-nav-item"><a href="/login.php">Log in or register</a></li>
-          <li class="site-footer-nav-item"><a href="/login.php?action=reset_password">Forgot password</a></li>
-          <li class="site-footer-nav-item"><a href="/account.php">Edit your account</a></li>
-        </ul>
-      </nav>
-
-      <nav class="site-footer-item site-page-nav">
-        <h3 class="site-footer-heading">Company policies</h3>
-        <ul>
-          <li class="site-footer-nav-item"><a href="/lowest-price-guarantee/">Lowest price guarantee</a></li>
-          <li class="site-footer-nav-item"><a href="/terms-conditions/">Terms and conditions</a></li>
-          <li class="site-footer-nav-item"><a href="/privacy-policy/">Privacy policy</a></li>
-          <li class="site-footer-nav-item"><a href="/news-room/">News room</a></li>
-          <li class="site-footer-nav-item"><a href="/sitemap/">Site map</a></li>
-        </ul>
-      </nav>
-
-      <!--{{#if theme_settings.show_footer_brands}}
+      {{#if theme_settings.show_footer_brands}}
         <nav class="site-footer-item site-brand-nav">
           <ul>
             {{#each shop_by_brand}}
-              <li class="site-footer-nav-item"><a href="{{url}}">{{name}}</a></li>
+              <li class="site-footer-nav-item">
+                <a href="{{url}}">{{name}}</a>
+              </li>
             {{/each}}
             {{#if 10 '<' shop_by_brand.length}}
               <li class="footer-menu-catchall">
-                <a href="{{{urls.brands}}}">{{lang 'footer.all_brands'}} {{heading}}</a>
+                <a href="{{{urls.brands}}}">
+                  {{lang 'footer.all_brands'}} {{heading}}
+                </a>
               </li>
             {{/if}}
           </ul>
@@ -120,12 +93,29 @@
         <span class="connect-label">{{lang 'footer.connect'}}</span>
         <ul class="social-icon-list">
           {{#each social_media}}
-            <li class="social-link {{#if display_name '===' 'google+'}}google-plus{{else}}{{display_name}}{{/if}}">
-              <a href="{{url}}" class="{{display_name}}" target="_blank"></a>
+            <li
+              class="
+                social-link
+                {{#if display_name '===' 'google+'}}
+                  google-plus
+                {{else}}
+                  {{display_name}}
+                {{/if}}
+              "
+            >
+              <a href="{{url}}" class="{{display_name}}" target="_blank">
+                <svg class="icon-social icon-{{display_name}}">
+                  <use xlink:href="#icon-{{display_name}}"></use>
+                </svg>
+              </a>
             </li>
           {{/each}}
         </ul>
-      </nav>-->
+
+        {{#if theme_settings.geotrust-ssl-common-name}}
+          {{> core/geotrust-ssl-seal}}
+        {{/if}}
+      </nav>
 
       <section class="site-footer-item site-info">
         {{#if theme_settings.payment-visa}}
@@ -148,48 +138,6 @@
             {{> components/common/icons/payment/discover}}
           </div>
         {{/if}}
-          <div class="payment-type payment-type-diners">
-            <svg version="1.1"
-            	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            	 x="0px" y="0px" width="636.2px" height="504px" viewBox="0 0 636.2 504" style="enable-background:new 0 0 636.2 504;"
-            	 xml:space="preserve">
-            <defs>
-            </defs>
-            <g id="__x0023_Layer_x0020_1_1_">
-            	<g>
-            		<path class="st0" d="M108.5,251.6c0.1,62.3,39,115.4,93.9,136.4V115.1C147.5,136.2,108.6,189.3,108.5,251.6z"/>
-            		<path class="st0" d="M307,115.1v273c54.9-21.1,93.8-74.2,93.9-136.5C400.8,189.3,361.9,136.1,307,115.1z"/>
-            		<path class="st0" d="M372.7,0H254.1C114.7,0,0,103.9,0,254.2C0,391.7,114.7,504.7,254.1,504h118.5
-            			c137.8,0.7,263.5-112.3,263.5-249.8C636.2,103.9,510.4,0,372.7,0z M254.7,482.2C127.3,482.2,24.1,379,24.1,251.6
-            			c0-127.4,103.2-230.7,230.6-230.7c127.4,0,230.7,103.3,230.7,230.7C485.4,379,382.1,482.2,254.7,482.2z"/>
-            	</g>
-            </g>
-            </svg>
-          </div>
-          <div class="payment-type payment-type-jcb">
-              <svg version="1.1"
-                	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                	 x="0px" y="0px" width="265px" height="198.9px" viewBox="0 0 265 198.9" style="enable-background:new 0 0 265 198.9;"
-                	 xml:space="preserve">
-                <defs>
-                </defs>
-                <g id="g6327_1_">
-                	<path id="path6338_1_" class="st0" d="M199.6,120.8h19.1c0.5,0,1.8-0.2,2.4-0.2c3.6-0.7,6.7-4,6.7-8.6c0-4.4-3.1-7.7-6.7-8.6
-                		c-0.5-0.2-1.6-0.2-2.4-0.2h-19.1V120.8L199.6,120.8z"/>
-                	<path id="path6349_1_" class="st0" d="M216.6,0c-18.2,0-33.2,14.8-33.2,33.2v34.4h46.8c1.1,0,2.4,0,3.3,0.2
-                		c10.6,0.5,18.4,6,18.4,15.5c0,7.5-5.3,13.8-15.1,15.1v0.4c10.7,0.7,18.9,6.7,18.9,16c0,10-9.1,16.6-21.1,16.6h-51.4v67.4h48.6
-                		c18.2,0,33.2-14.8,33.2-33.2V0L216.6,0L216.6,0z"/>
-                	<path id="path6360_1_" class="st0" d="M225.5,85.4c0-4.4-3.1-7.3-6.7-7.8c-0.4,0-1.3-0.2-1.8-0.2h-17.3v16h17.3
-                		c0.5,0,1.6,0,1.8-0.2C222.4,92.7,225.5,89.8,225.5,85.4z"/>
-                </g>
-                <path id="path6371_1_" class="st0" d="M33.3,0C15.1,0,0.2,14.8,0.2,33.2v81.8c9.3,4.6,18.9,7.5,28.6,7.5c11.5,0,17.7-6.9,17.7-16.4
-                	V67.4h28.4v38.4c0,14.9-9.3,27.1-40.8,27.1C14.9,133,0,128.8,0,128.8v69.8h48.6c18.2,0,33.2-14.8,33.2-33.2V0C81.8,0,33.3,0,33.3,0z
-                	"/>
-                <path id="path6384_1_" class="st0" d="M125,0c-18.2,0-33.2,14.8-33.2,33.2v43.4c8.4-7.1,23-11.7,46.4-10.6c12.6,0.5,26,4,26,4v14
-                	c-6.7-3.5-14.8-6.6-25.1-7.3c-17.9-1.3-28.6,7.5-28.6,22.8c0,15.5,10.7,24.2,28.6,22.8c10.4-0.7,18.4-4,25.1-7.3v14
-                	c0,0-13.3,3.5-26,4c-23.5,1.1-38.1-3.5-46.4-10.6v76.5h48.6c18.2,0,33.2-14.8,33.2-33.2V0C173.6,0,125,0,125,0z"/>
-                </svg>
-          </div>
         {{#if theme_settings.payment-paypal}}
           <div class="payment-type payment-type-paypal">
             {{> components/common/icons/payment/paypal}}

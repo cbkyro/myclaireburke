@@ -1,0 +1,1 @@
+{"components/amp/styles/mini-cart":".cart-preview-trigger {\n  color: {{color_headings}};\n  font-weight: 700;\n}\n\n.cart-quantity {\n  padding: 3px 10px;\n  margin-right: 5px;\n  font-weight: normal;\n  color: #ffffff;\n  background-color: {{color_headings}};\n  border-radius: 9999em;\n}\n\n[data-cart-count=\"0\"] .cart-quantity {\n  display: none;\n}\n"}

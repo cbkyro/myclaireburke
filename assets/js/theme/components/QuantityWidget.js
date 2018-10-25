@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import Alert from '../components/Alert';
 
 export default class QuantityWidget {

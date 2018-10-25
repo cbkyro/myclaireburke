@@ -1,5 +1,5 @@
 {{!
-  Shows a product's price.
+  Shows a product price.
 
   Prices are fairly complicated. Besides having to be able to show the price
   with and without tax, a merchant can also assign a Recommended Retail Price,
@@ -20,16 +20,16 @@
 }}
 {{#if price}}
   {{#or has_options product.options.length}}
-    <div class="price {{#if price.without_tax}}{{#if price.with_tax}}multiple-prices{{/if}}{{/if}}" {{#if schema_org}} itemprop="offers" itemscope itemtype="http://schema.org/Offer" {{/if}}>
-      {{#if schema_org}}
-        <meta itemprop="priceCurrency" content="{{currency_selector.active_currency_code}}">
-
+    <div
+      class="
+        price
         {{#if price.without_tax}}
-          <meta itemprop="price" content="{{price.without_tax.value}}">
-        {{else}}
-          <meta itemprop="price" content="{{price.with_tax.value}}">
+          {{#if price.with_tax}}
+            multiple-prices
+          {{/if}}
         {{/if}}
-      {{/if}}
+      "
+    >
 
       {{#if price.without_tax}}
         <span class="price-withouttax" data-product-price-wrapper="without-tax">
@@ -52,7 +52,9 @@
 
           {{#if show_tax_labels}}
             {{#if price.with_tax}}
-              <span class="price-tax-label">{{lang 'product.excluding_tax'}}</span>
+              <span class="price-tax-label">
+                {{lang 'product.excluding_tax'}}
+              </span>
             {{/if}}
           {{/if}}
         </span>
@@ -79,7 +81,9 @@
 
           {{#if show_tax_labels}}
             {{#if price.without_tax}}
-              <span class="price-tax-label">{{lang 'product.including_tax'}}</span>
+              <span class="price-tax-label">
+                {{lang 'product.including_tax'}}
+              </span>
             {{/if}}
           {{/if}}
         </span>
@@ -94,24 +98,16 @@
       {{/if}}
     </div>
   {{else}}
-    <div class="price {{#if price.without_tax}}{{#if price.with_tax}}multiple-prices{{/if}}{{/if}}" {{#if schema_org}} itemprop="offers"
-         itemscope itemtype="http://schema.org/Offer" {{/if}} >
-      {{#if schema_org}}
-      
-        {{#if product.can_purchase}}
-          <meta itemprop="availability" content="http://schema.org/InStock">
-        {{/if}}
-        
-        <meta itemprop="itemCondition" content="http://schema.org/NewCondition">
-        
-        <meta itemprop="priceCurrency" content="{{currency_selector.active_currency_code}}">
-
+    <div
+      class="
+        price
         {{#if price.without_tax}}
-          <meta itemprop="price" content="{{price.without_tax.value}}">
-        {{else}}
-          <meta itemprop="price" content="{{price.with_tax.value}}">
+          {{#if price.with_tax}}
+            multiple-prices
+          {{/if}}
         {{/if}}
-      {{/if}}
+      "
+    >
 
       {{#if price.without_tax}}
         <span class="price-withouttax" data-product-price-wrapper="without-tax">
@@ -128,7 +124,9 @@
 
           {{#if show_tax_labels}}
             {{#if price.with_tax}}
-              <span class="price-tax-label">{{lang 'product.excluding_tax'}}</span>
+              <span class="price-tax-label">
+                {{lang 'product.excluding_tax'}}
+              </span>
             {{/if}}
           {{/if}}
         </span>
@@ -149,7 +147,9 @@
 
           {{#if show_tax_labels}}
             {{#if price.without_tax}}
-              <span class="price-tax-label">{{lang 'product.including_tax'}}</span>
+              <span class="price-tax-label">
+                {{lang 'product.including_tax'}}
+              </span>
             {{/if}}
           {{/if}}
         </span>
@@ -157,9 +157,9 @@
 
       {{#if show_savings}}
         {{#if price.saved}}
-          <!--<span class="price-saved" data-product-price-saved>
+          <span class="price-saved" data-product-price-saved>
             {{lang 'core.price.you_save' amount=price.saved.formatted}}
-          </span>-->
+          </span>
         {{/if}}
       {{/if}}
     </div>

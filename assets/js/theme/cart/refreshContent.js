@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import utils from '@bigcommerce/stencil-utils';
 import SelectWrapper from '../global/select-wrapper';
 

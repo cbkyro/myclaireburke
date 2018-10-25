@@ -1,18 +1,17 @@
-{{#if this.length ">" 1}}
-  <div class="product-thumbnails">
-    {{#each this}}
-      <span
-        class="product-thumbnail {{#if @first}}active{{/if}}"
-        data-image-thumb
-        data-high-res="{{getImage this 'large'}}"
-        data-thumb-num="{{@index}}"
+<div class="product-thumbnails">
+  {{#each this}}
+    <span
+      class="product-thumbnail {{#if @first}}active{{/if}}"
+      {{#if @first}}data-default-image{{/if}}
+      data-image-thumb
+      data-high-res="{{getImage this 'large'}}"
+      data-thumb-num="{{@index}}"
+    >
+      <img
+        src="{{getImage this 'thumbnail'}}"
+        alt="{{this.alt}}"
+        title="{{this.alt}}"
       >
-        <img
-          src="{{getImage this 'thumbnail'}}"
-          alt="{{this.alt}}"
-          title="{{this.alt}}"
-        >
-      </span>
-    {{/each}}
-  </div>
-{{/if}}
+    </span>
+  {{/each}}
+</div>

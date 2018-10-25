@@ -7,7 +7,13 @@
         {{#each cart.items}}
           <li class="cart-preview-list-item">
 
-            <a class="cart-preview-list-item-remove" data-product-id="{{id}}" href="{{remove_url}}">&times;</a>
+            <a
+              class="cart-preview-list-item-remove"
+              data-product-id="{{id}}"
+              href="{{remove_url}}"
+            >
+              &times;
+            </a>
 
             {{#if image}}
               <div class="cart-preview-list-item-image-wrap">
@@ -46,9 +52,13 @@
               {{/if}}
 
               <div class="cart-preview-list-item-price">
-                <span class="{{#if price_discounted}}price-discounted{{/if}}">{{price.formatted}}</span>
+                <span class="{{#if price_discounted}}price-discounted{{/if}}">
+                  {{price.formatted}}
+                </span>
                 {{#if price_discounted}}
-                  <span class="cart-item-discount">{{price_discounted.formatted}}</span>
+                  <span class="cart-item-discount">
+                    {{price_discounted.formatted}}
+                  </span>
                 {{/if}}
                 <span class="multiplier"> &times;</span> {{quantity}}
               </div>
@@ -80,14 +90,29 @@
         </div>
       {{/if}}
       <div class="cart-preview-pricing">
-        <p class="cart-preview-total-price">{{lang 'header.total'}} &nbsp; {{{cart.grand_total.formatted}}}</p>
+        <p class="cart-preview-total-price">
+          {{lang 'header.total'}} &nbsp; {{{cart.grand_total.formatted}}}
+        </p>
       </div>
-      <a href="{{urls.cart}}" class="button secondary"><span>{{lang 'header.view_cart'}}</span></a>
-      <a href="{{urls.checkout.single_address}}" class="button">{{lang 'cart_preview.checkout.title'}}</a>
+      <a href="{{urls.cart}}" class="button secondary">
+        <span>
+          {{lang 'header.view_cart'}}
+        </span>
+      </a>
+      <a href="{{urls.checkout.single_address}}" class="button">
+        {{lang 'cart_preview.checkout.title'}}
+      </a>
+      {{#if cart.show_multiple_address_shipping}}
+        <a class="checkout-multiple" href="{{urls.checkout.multiple_address}}">
+          {{lang 'cart.checkout_multiple'}}
+        </a>
+      {{/if}}
     </div>
 
   {{else}}
-    <p class="cart-preview-empty">{{lang 'cart_preview.checkout.empty_cart'}}</p>
+    <p class="cart-preview-empty">
+      {{lang 'cart_preview.checkout.empty_cart'}}
+    </p>
   {{/if}}
   <div id="cart-preview-overlay" class="cart-preview-overlay"></div>
 </div>

@@ -1,11 +1,9 @@
 {{#if location '===' 'top'}}
   {{#if this.top}}
     <div class="banners banners-top">
-      {{#each this.top}}
-        <div class="banner rte">
-          {{{this}}}
-        </div>
-      {{/each}}
+      <div class="banner rte">
+        {{{limit this.top 1}}}
+      </div>
     </div>
   {{/if}}
 {{/if}}
@@ -13,11 +11,9 @@
 {{#if location '===' 'bottom'}}
   {{#if this.bottom}}
     <div class="banners banners-bottom">
-      {{#each this.bottom}}
-        <div class="banner rte">
-          {{{this}}}
-        </div>
-      {{/each}}
+      <div class="banner rte">
+        {{{limit this.bottom 1}}}
+      </div>
     </div>
   {{/if}}
 {{/if}}

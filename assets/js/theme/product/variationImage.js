@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import ProductViewTemplates from './productViewTemplates';
 import ProductImageSwitcher from './product-image-switcher';
 import imagesLoaded from 'imagesloaded';

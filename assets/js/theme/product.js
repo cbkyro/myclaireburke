@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import baguetteBox from 'baguettebox.js';
 import PageManager from '../PageManager';
 import Alert from './components/Alert';

@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import _ from 'lodash';
 
 export default class headerTools {
@@ -9,7 +8,6 @@ export default class headerTools {
     this.$searchToggle = $('.search-toggle');
     this.$searchForm = $('.search-form-wrapper');
     this.$searchClose = $('.search-close');
-    this.$searchToggle = $('.search-toggle');
     this.$searchInput = $('.search-input');
     this.$shoppingTools = $('.shopping-tools');
     this.$shoppingTools.revealer('show', true);
@@ -48,8 +46,10 @@ export default class headerTools {
       this._hideCartPreview();
     });
 
-    $(window).on('resize', _.debounce(this._moveHeaderToolsUp.bind(this), 200));
-    this._moveHeaderToolsUp();
+    if (this.$navMenu.length) {
+      $(window).on('resize', _.debounce(this._moveHeaderToolsUp.bind(this), 200));
+      this._moveHeaderToolsUp();
+    }
   }
 
   _showSearchForm() {
@@ -66,7 +66,10 @@ export default class headerTools {
         this.$searchForm.css('left', leftPosition);
     }
 
-    this.$searchForm.revealer('show');
+    this.$searchForm.revealer('show').one('revealer-show', () => {
+      this.$searchForm.find(this.$searchInput).focus();
+    });
+
     this.$shoppingTools.revealer('hide');
   }
 

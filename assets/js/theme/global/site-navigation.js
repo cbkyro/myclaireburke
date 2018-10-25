@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import debounce from '../utils/debouncer';
 
 export default class Navigation {
@@ -155,10 +154,10 @@ export default class Navigation {
     if (this.$mainHeader.hasClass('split-menu')) {
       let $navItems = $('.nav-menu-item:not(.more)');
 
-      this.$navItemMore.css('display', $navItems.length > 6 ? 'inline-block' : 'none');
+      this.$navItemMore.css('display', $navItems.length > 4 ? 'inline-block' : 'none');
 
-      if ( $navItems.length > 6) {
-        while ($navItems.length > 5) {
+      if ( $navItems.length > 4) {
+        while ($navItems.length > 3) {
           $navItems.last().removeClass('nav-menu-item').addClass('nav-submenu-item').prependTo('.overflow');
           $navItems.splice(-1,1);
         }

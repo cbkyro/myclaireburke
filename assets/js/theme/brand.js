@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import PageManager from '../pageManager';
 import FacetedSearch from './components/faceted-search';
 import Loading from 'bc-loading';

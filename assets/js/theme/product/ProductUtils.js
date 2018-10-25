@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import utils from '@bigcommerce/stencil-utils';
 import Tabs from 'bc-tabs';
 import Loading from 'bc-loading';
@@ -113,8 +112,31 @@ export default class ProductUtils {
       $sku: $('[data-product-sku]', $el),
       $weight: $('[data-product-weight]', $el),
       $addToCart: $('[data-button-purchase]', $el),
-      $imagePreview: $('[data-variation-preview]', $el)
+      $imagePreview: $('[data-variation-preview]', $el),
+      stock: {
+        $selector: $('[data-product-stock]', $el),
+        $level: $('[data-product-stock-level]', $el),
+      }
     }
+  }
+
+  /**
+  * https://stackoverflow.com/questions/49672992/ajax-request-fails-when-sending-formdata-including-empty-file-input-in-safari
+  * Safari browser with jquery 3.3.1 has an issue uploading empty file parameters. This function removes any empty files from the form params
+  * @param formData: FormData object
+  * @returns FormData object
+  */
+  filterEmptyFilesFromForm(formData) {
+    try {
+      for (const [key, val] of formData) {
+        if (val instanceof File && !val.name && !val.size) {
+          formData.delete(key);
+        }
+      }
+    } catch (e) {
+      console.error(e); // eslint-disable-line no-console
+    }
+    return formData;
   }
 
   _updateQuantity(event) {
@@ -192,14 +214,24 @@ export default class ProductUtils {
           viewModel.$saved.html(this.options.priceSavedTemplate(priceStrings));
         }
 
+        // stock
+        if (data.stock) {
+          viewModel.stock.$selector.removeClass('product-details-hidden');
+          viewModel.stock.$level.text(data.stock);
+        } else {
+          viewModel.stock.$level.text('0');
+        }
+
         // update sku if exists
         if (viewModel.$sku.length) {
           viewModel.$sku.html(data.sku);
         }
 
         // update weight if exists
-        if (viewModel.$weight.length) {
+        if (viewModel.$weight.length && data.weight) {
           viewModel.$weight.html(data.weight.formatted);
+        } else {
+          viewModel.$weight.html('');
         }
 
         // handle product variant image if exists
@@ -215,6 +247,11 @@ export default class ProductUtils {
           );
 
           this.callbacks.switchImage(mainImageUrl, thumbImageUrl, data.image.alt);
+        } else {
+          const $defaultImageContainer = $('[data-default-image]');
+          const $defaultImage = $defaultImageContainer.find('img');
+
+          this.callbacks.switchImage($defaultImageContainer.attr('data-high-res'), $defaultImage.attr('src'), $defaultImage.attr('alt'));
         }
 
         this.cartOptionAlert.clear();
@@ -244,6 +281,7 @@ export default class ProductUtils {
 
       // Make sure we don't fire this twice when we're in a quick-view
       const productId = $(form).find('[data-product-id]').val();
+      const formData = new FormData(form);
 
       if (this.productId !== productId) { return; }
 
@@ -253,7 +291,7 @@ export default class ProductUtils {
       this.callbacks.willUpdate($(form));
 
       // Add item to cart
-      utils.api.cart.itemAdd(new FormData(form), (err, response) => {
+      utils.api.cart.itemAdd(this.filterEmptyFilesFromForm(formData), (err, response) => {
         let isError = false;
 
         if (err || response.data.error) {
@@ -315,26 +353,44 @@ export default class ProductUtils {
   }
 
   _disableAttribute($attribute, behavior, outOfStockMessage) {
+    if (this._getAttributeType($attribute) === 'set-select') {
+      return this._disableSelectOptionAttribute($attribute, behavior, outOfStockMessage);
+    }
+
     if (behavior === 'hide_option') {
-      $attribute.attr('disabled', 'disabled').hide();
+      $attribute.hide();
     } else {
-      if (this._getAttributeType($attribute) === 'set-select') {
-        $attribute.html($attribute.html().replace(outOfStockMessage, '') + outOfStockMessage);
-      } else {
-        $attribute.addClass('option-unavailable');
-      }
+      $attribute.addClass('option-unavailable');
+    }
+  }
+
+  _disableSelectOptionAttribute($attribute, behavior, outOfStockMessage) {
+    if (behavior === 'hide_option') {
+      $attribute.toggleOption(false);
+    } else {
+      $attribute.attr('disabled', 'disabled');
+      $attribute.html($attribute.html().replace(outOfStockMessage, '') + outOfStockMessage);
     }
   }
 
   _enableAttribute($attribute, behavior, outOfStockMessage) {
+    if (this._getAttributeType($attribute) === 'set-select') {
+      return this._enableSelectOptionAttribute($attribute, behavior, outOfStockMessage);
+    }
+
     if (behavior === 'hide_option') {
-      $attribute.removeAttr('disabled').show();
+      $attribute.show();
     } else {
-      if (this._getAttributeType($attribute) === 'set-select') {
-        $attribute.html($attribute.html().replace(outOfStockMessage, ''));
-      } else {
-        $attribute.removeClass('option-unavailable');
-      }
+      $attribute.removeClass('option-unavailable');
+    }
+  }
+
+  _enableSelectOptionAttribute($attribute, behavior, outOfStockMessage) {
+    if (behavior === 'hide_option') {
+      $attribute.toggleOption(true);
+    } else {
+      $attribute.removeAttr('disabled');
+      $attribute.html($attribute.html().replace(outOfStockMessage, ''));
     }
   }
 

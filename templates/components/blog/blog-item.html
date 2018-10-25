@@ -5,6 +5,12 @@
     <!-- Post header -->
     <header class="post-header">
       <h1 class="post-title">{{title}}</h1>
+      <div class="post-details">
+        <time class="post-timestamp">{{date_published}}</time>
+        {{#if author}}
+          <span class="post-meta post-author">{{lang 'blog.posted_by' author=author}}</span>
+        {{/if}}
+      </div>
     </header>
 
     <!-- Post thumbnail -->
@@ -13,13 +19,7 @@
         <img src="{{getImage thumbnail 'large'}}" alt="{{thumbnail.alt}}">
       </figure>
     {{/if}}
-  
-    <div class="post-details">
-      <time class="post-timestamp">{{date_published}}</time>
-      {{#if author}}
-        <span class="post-meta post-author">{{lang 'blog.posted_by' author=author}}</span>
-      {{/if}}
-    </div>
+
   </a>
 
   <!-- Post content -->
@@ -34,7 +34,7 @@
     {{#if tags.length}}
       <div class="post-tags">
         {{#each tags}}
-          <a href="{{url}}" title="{{lang 'blog.tag_permalink' tag=name}}">{{name}}</a> {{#unless @last}}&mdash;{{/unless}}
+          <a href="{{url}}" title="{{lang 'blog.tag_permalink' tag=name}}">{{name}}</a>{{#unless @last}},&nbsp;{{/unless}}
         {{/each}}
       </div>
     {{/if}}
