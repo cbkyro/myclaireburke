@@ -1,0 +1,79 @@
+---
+brands: true
+category:
+  shop_by_price: true
+  products:
+    limit: {{theme_settings.product-count}}
+---
+
+{{#partial "page"}}
+  <div class="category-hero" data-category-name="{{dashcase category.name}}">
+    <div class="category-hero-border">
+      <div class="category-hero-inner">
+        <div class="category-hero-border-inner">
+          <div class="category-hero-border-inner-inner">
+            <h1 class="page-heading">{{category.name}}</h1>
+            {{#if theme_settings.show-category-description}}
+              <div class="page-description">{{{category.description}}}</div>
+            {{/if}}
+            {{#if theme_settings.show-category-image}}
+              <img src="{{getImage category.image 'original'}}"
+                   class="collection-product-image"
+                   alt="{{category.name}}" />
+            {{/if}}
+          </div>
+        </div>
+      </div>
+      <a href="#category-container" class="category-hero-more">
+        Shop {{category.name}}
+      </a>
+      <script>
+        window.onload = function(){
+	    $('.category-hero-more').on('click',function (e) {
+	      e.preventDefault();
+	      var $target = $(this.hash);
+	      $('html, body').stop().animate({
+	        'scrollTop': $target.offset().top-$('header.main-header').height()
+	      }, 900);
+	    });
+        };
+      </script>
+    </div>
+  </div>
+
+  <div class="container" data-category-name="{{dashcase category.name}}" id="category-container">
+    <div class="content">
+
+      {{{snippet 'categories'}}}
+
+      {{> components/common/breadcrumbs
+        breadcrumbs
+      }}
+      <div class="collection-product-listing-header">
+        {{> components/products/product-listing-header
+          show_compare=category.show_compare
+        }}
+      </div>
+      <aside
+        class="sidebar
+        {{#unless category.faceted_search_enabled}}
+          sidebar-disabled
+        {{/unless}}"
+        data-category-sidebar
+      >
+        {{> components/category/sidebar}}
+      </aside>
+      <main class="collection-products product-listing" data-category>
+        {{> components/category/product-listing
+          show_compare=category.show_compare
+        }}
+      </main>
+    </div>
+    
+    {{> components/category/reviews}}
+    {{#each products.product.reviews.list}}a{{/each}}
+  </div>
+
+{{/partial}}
+
+{{> layout/base}}

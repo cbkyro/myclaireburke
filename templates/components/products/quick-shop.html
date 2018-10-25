@@ -1,0 +1,38 @@
+<a href="#" class="modal-close">&times;</a>
+
+<div class="modal-body" data-quick-shop-product>
+
+  <div class="product-images">
+    {{> components/products/images
+      images=product.images
+      default_image=theme_settings.default_image
+    }}
+    {{> components/products/product-thumbnails
+      product.images
+    }}
+  </div>
+
+  <div class="product-details-wrapper">
+    <div class="product-details" data-product-title="{{product.title}}">
+      {{> components/products/product-details
+        quick_shop=true
+      }}
+      <a class="quick-shop-view-product" href="{{product.url}}">
+        {{lang 'product.view_product'}}
+      </a>
+    </div>
+  </div>
+  {{#if settings.show_product_rating}}
+    <div id="user-reviews">
+      <div class="product-reviews">
+        {{# if product.num_reviews ">" 0}}
+            {{> components/products/ratings rating=product.rating aggregate=true}}
+            {{{snippet 'product_rating'}}}
+            <h3 class="section-title">{{lang 'product.reviews.customer_reviews'}}</h3>
+        {{/if}}
+        {{> components/products/reviews reviews=product.reviews}}
+      </div>
+    </div>
+  {{/if}}
+
+</div>

@@ -1,0 +1,54 @@
+{{!-- Website: include in base.html --}}
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "{{settings.store_name}}",
+    "url": "{{urls.home}}"
+  }
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "{{settings.store_name}}",
+  "url": "{{urls.home}}",
+  "logo": "{{getImage settings.store_logo.image}}",
+  "telephone": "+{{settings.phone_number}}",
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "telephone": "+{{settings.phone_number}}",
+    "contactType": "customer service",
+    "contactOption": "TollFree",
+    "areaServed": "US",
+    "availableLanguage": "English"
+  },{
+    "@type": "ContactPoint",
+    "telephone": "+{{settings.phone_number}}",
+    "contactType": "technical support",
+    "contactOption": "TollFree",
+    "areaServed": "US",
+    "availableLanguage": "English"
+  },{
+    "@type": "ContactPoint",
+    "telephone": "+{{settings.phone_number}}",
+    "contactType": "sales",
+    "contactOption": "TollFree",
+    "areaServed": "US",
+    "availableLanguage": "English"
+  },{
+    "@type": "ContactPoint",
+    "telephone": "+{{settings.phone_number}}",
+    "contactType": "package tracking",
+    "contactOption": "TollFree",
+    "areaServed": "US",
+    "availableLanguage": "English"
+  }],
+  "sameAs": [
+    {{#each social_media}}
+      "{{url}}"{{#unless @last}},{{/unless}}
+    {{/each}}
+  ]
+}
+</script>

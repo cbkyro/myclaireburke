@@ -1,0 +1,20 @@
+.header-logo {
+  display: block;
+  width: 400px;
+  margin: 0 auto;
+
+  > a {
+    display: inline-block;
+
+    > img { width: 80%; }
+  }
+}
+
+.ExpressCheckoutBlockCollapsed .po_box_error {
+    display: none;
+    padding: 10px;
+}
+ .po_box_error {
+    padding: 10px;
+ }
+ 

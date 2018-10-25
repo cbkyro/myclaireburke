@@ -1,0 +1,117 @@
+{{!
+  @param default_image A default product image.
+}}
+<article class="product-item">
+  <a class="product-item-link" href="{{url}}">
+    <figure class="product-item-thumbnail">
+      {{#if quick_shop}}
+        <span class="quick-shop-trigger" data-quick-shop data-product-id="{{id}}">
+          {{lang 'product.quick_shop'}}
+        </span>
+      {{/if}}
+
+      <img
+        class="product-item-image"
+        src="{{getImage image 'medium' (cdn default_image)}}"
+        alt="{{image.alt}}"
+        title="{{image.alt}}"
+      >
+
+      {{#if price.saved}}
+        <span class="product-item-sale">{{lang 'product.sale'}}</span>
+      {{/if}}
+    </figure>
+
+    <div class="product-item-details">
+      <h3 class="product-item-title">{{name}}</h3>
+      {{# if num_reviews ">" 0}}
+        <div class="product-item-rating">
+          {{> components/products/ratings rating=rating aggregate=true}}
+          {{{snippet 'product_rating'}}}
+        </div>
+      {{/if}}
+    </div>
+  </a>
+  <form
+    class="form product-form"
+      method="post"
+      action="/cart.php"
+      enctype="multipart/form-data"
+      data-cart-item-add={{id}}>
+      <input type="hidden" name="action" value="add">
+      <input type="hidden" name="product_id" value="{{id}}" data-product-id>
+      
+   {{> components/products/price
+      show_tax_labels=true
+      price_as_low_as=price_as_low_as
+      schema_org=false
+    }}
+
+      <div class="form-field product-quantity-wrapper" data-product-quantity>
+      <label class="form-label">
+        <span class="form-field-title">{{lang 'product.quantity'}}</span>
+        {{> components/common/quantity product}}
+      </label>
+    </div>
+    
+    {{#if show_cart_action}}
+        {{#if pre_order}}
+          <input class="button pre-order" type="submit" value="{{lang 'product.pre_order'}}" data-button-purchase data-button-preorder>
+          {{release_date}}
+        {{else}}
+          <input class="button" type="submit" value="{{lang 'product.add_to_cart'}}" data-button-purchase>
+        {{/if}}
+
+        {{#if settings.show_wishlist}}
+          <a class="button inverted" href="{{add_to_wishlist_url}}" data-wishlist-add>{{lang 'product.add_to_wishlist'}}</a>
+        {{/if}}
+
+        <span class="loading"></span>
+      {{{snippet 'product_addtocart'}}}
+
+      <div class="product-alert" data-product-cart-message></div>
+      <div class="product-alert" data-product-option-message></div>
+    {{else}}
+        <input type="button" disabled="disabled" value="Sold Out" class="button disabled" />
+      {{/if}}
+    
+    <!--{{#if stock_level ">" 0}}
+      <input class="button" type="submit" value="Add to Bag" data-button-purchase="">
+    {{else}}
+      {{#if stock_level "===" null}}
+        <input class="button" type="submit" value="Add to Bag" data-button-purchase="">
+      {{else}}
+        <input class="button disabled" type="submit" value="Sold Out" disabled="disabled">
+      {{/if}}
+    {{/if}}-->
+</form>
+
+  {{#if show_compare}}
+    <div
+      class="form-inline
+      form-field
+      form-field-options
+      form-field-checkbox
+      product-item-compare"
+    >
+      <div class="form-field-control">
+        <label
+          class="form-label {{class}}"
+          for="compare-{{id}}"
+          data-text="{{lang "product.compare"}}"
+          data-alt-text="{{lang "product.comparing"}}"
+        >
+          <input
+            class="form-input form-checkbox"
+            type="checkbox"
+            name="products[]"
+            value="{{id}}"
+            id="compare-{{id}}"
+          >
+          <span class="form-label-text">{{lang 'product.compare'}}</span>
+        </label>
+      </div>
+    </div>
+  {{/if}}
+    
+</article>

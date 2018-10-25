@@ -1,0 +1,40 @@
+{{#partial "page"}}
+{{# if page.title '!==' 'Your Holiday Gift Guide'}}
+<div class="container">
+  <article class="content cms-page">
+    <h1 class="page-heading">{{page.title}}</h1>
+    {{> components/common/breadcrumbs breadcrumbs}}
+    <div class="{{# if page.title '!==' 'Email Sign-Up'}}page-content{{/if}} rte">
+      {{#replace '%%Syndicate%%' page.content}}
+        {{> components/rss}}
+      {{else}}
+        {{{page.content}}}
+      {{/replace}}
+
+      {{#if page.feed}}
+        <ul class="rss-feed">
+          {{#each page.feed}}
+            <li class="rss-feed-item">
+              <h3><a href="{{url}}" target="_blank">{{title}}</a></h3>
+              <p>{{{content}}}</p>
+            </li>
+          {{/each}}
+        </ul>
+      {{/if}}
+    </div>
+    {{# if page.title '===' 'Email Sign-Up'}}
+      {{> components/common/newsletter-subscribe}}
+    {{/if}}
+  </article>
+</div>
+
+{{else}}
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700i" rel="stylesheet">
+
+{{{page.content}}}
+
+{{/if}}
+
+{{/partial}}
+
+{{> layout/base}}
